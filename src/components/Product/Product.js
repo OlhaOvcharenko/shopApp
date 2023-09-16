@@ -6,14 +6,10 @@ import ProductForm from '../ProductForm/ProductForm';
 
 const Product = props => {
 
-  const initialSize = props.sizes[0].name;
+  //const initialSize = props.sizes[0].name;
 
   const [currentColor, setCurrentColor] = useState(props.colors[0]);
-  const [currentSize, setCurrentSize] = useState(initialSize);
-
-  const prepareColorClassName = color => {
-    return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
-  }
+  const [currentSize, setCurrentSize] = useState(props.sizes[0].name);
 
   const getPrice = () => {
 
@@ -22,9 +18,7 @@ const Product = props => {
   };
 
 
-  const addToCart = (event) => {
-    event.preventDefault(); // Prevent the default form submission and page refresh
-
+  const addToCart = () => {
     console.log(
       `
       Summary
@@ -45,14 +39,14 @@ const Product = props => {
           <h2 className={styles.name}>{props.title}</h2>
           <span className={styles.price}>Price: {getPrice()}$</span>
         </header>
-        <ProductForm onSubmit={addToCart} 
+        <ProductForm 
           sizes={props.sizes}
           setCurrentSize={setCurrentSize}
           currentSize={currentSize}
           colors={props.colors}
           setCurrentColor={setCurrentColor}
           currentColor={currentColor}
-          prepareColorClassName={prepareColorClassName} />
+          addToCart = {addToCart}/>
       </div>
     </article>
   )

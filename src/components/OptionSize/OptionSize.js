@@ -8,9 +8,9 @@ const OptionSize = (props) => {
     props.setCurrentSize(size);
   };
 
-    return (
-        <div className={styles.sizes}>
-        <h3 className={styles.optionLabel}>Sizes</h3>
+  return (
+    <div className={styles.sizes}>
+      <h3 className={styles.optionLabel}>Sizes</h3>
         <ul className={styles.choices}>
           {props.sizes.map((size) => (
             <li key={size.name}>
@@ -25,7 +25,7 @@ const OptionSize = (props) => {
           ))}
         </ul>
       </div>
-    );
-  };
+  );
+};
   
   export default OptionSize;
