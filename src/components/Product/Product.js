@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import ProductImage from '../ProductImage/ProductImage';
 import ProductForm from '../ProductForm/ProductForm';
+import { useMemo } from 'react';
 
 const Product = props => {
 
@@ -11,12 +12,16 @@ const Product = props => {
   const [currentColor, setCurrentColor] = useState(props.colors[0]);
   const [currentSize, setCurrentSize] = useState(props.sizes[0].name);
 
-  const getPrice = () => {
-
+  const getPrice = useMemo(() => {
     const findPrice = props.sizes.find((item) => item.name === currentSize);
-    return props.basePrice + findPrice.additionalPrice;
-  };
 
+    return props.basePrice + findPrice.additionalPrice;
+    
+  }, [props.basePrice, currentSize, props.sizes]);
+  
+  const price = () => {
+    return getPrice;
+  };
 
   const addToCart = () => {
     console.log(
@@ -24,7 +29,7 @@ const Product = props => {
       Summary
       ===============
       Name: ${props.title}
-      Price: ${getPrice()}
+      Price: ${price()}$
       Size: ${currentSize}
       Color: ${currentColor}
       `
@@ -37,7 +42,7 @@ const Product = props => {
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
-          <span className={styles.price}>Price: {getPrice()}$</span>
+          <span className={styles.price}>Price: {price()}$</span>
         </header>
         <ProductForm 
           sizes={props.sizes}
