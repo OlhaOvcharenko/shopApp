@@ -30,16 +30,18 @@ const ProductForm = (props) => {
 };
 
 ProductForm.propTypes = {
-  name: PropTypes.string.isRequired, // Required string
-  title: PropTypes.string.isRequired, // Required string
-  basePrice: PropTypes.number.isRequired, // Required number
-  colors: PropTypes.arrayOf(PropTypes.string).isRequired, // Required array of strings
   sizes: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired, // Required string
-      additionalPrice: PropTypes.number.isRequired, // Required number
+      name: PropTypes.string.isRequired, 
+      additionalPrice: PropTypes.number.isRequired, 
     })
-  ).isRequired, // Required array of objects with specific shape
+  ).isRequired, 
+  setCurrentSize: PropTypes.func.isRequired,
+  currentSize: PropTypes.string.isRequired, 
+  colors: PropTypes.arrayOf(PropTypes.string).isRequired, 
+  setCurrentColor: PropTypes.func.isRequired, 
+  currentColor: PropTypes.string.isRequired, 
+  addToCart: PropTypes.func.isRequired,
 };
   
   export default ProductForm;

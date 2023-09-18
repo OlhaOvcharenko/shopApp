@@ -53,16 +53,17 @@ const Product = props => {
 };
 
 Product.propTypes = {
-  name: PropTypes.string.isRequired, // Required string
-  title: PropTypes.string.isRequired, // Required string
-  basePrice: PropTypes.number.isRequired, // Required number
-  colors: PropTypes.arrayOf(PropTypes.string).isRequired, // Required array of strings
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  colors: PropTypes.arrayOf(PropTypes.string).isRequired, 
+  basePrice: PropTypes.number.isRequired,
   sizes: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired, // Required string
-      additionalPrice: PropTypes.number.isRequired, // Required number
+      name: PropTypes.string.isRequired, 
+      additionalPrice: PropTypes.number.isRequired, 
     })
-  ).isRequired, // Required array of objects with specific shape
-};
+  ).isRequired,
+}
+  
 
 export default Product;
